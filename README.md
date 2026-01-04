@@ -28,6 +28,10 @@ To favorite a game, click the little circle next to its name. You can filter for
 
 To launch a game, just click its name.
 
+## Editing
+
+Just download the .zip file, extract it, and open it with Godot (4.5 or later)
+
 ## Todo
 
 - Support for standalone games (Quiplash, Fibbage XL, Drawful 2, Quiplash 2, and the Survey Scramble)
