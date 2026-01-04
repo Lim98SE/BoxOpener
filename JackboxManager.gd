@@ -29,7 +29,13 @@ const executables: Dictionary = {
 		}
 }
 
-var os_mode: int = 0
+enum operating_systems {
+	windows,
+	mac,
+	linux
+}
+
+var os_mode: operating_systems = operating_systems.windows
 
 @warning_ignore("unused_signal") # godot they are used elsewhere
 signal searched(query: String)
@@ -300,8 +306,12 @@ func _ready() -> void:
 			else:
 				owned_games["standalone"] = {}
 				owned_games["standalone"][i] = games["standalone"][i]
+	
+	if OS.has_feature("windows"): os_mode = operating_systems.windows
+	elif OS.has_feature("macos"): os_mode = operating_systems.mac
+	elif OS.has_feature("linux"): os_mode = operating_systems.linux
 
-func launch_game(pack: String, game: String):
+func launch_windows(pack: String, game: String):
 	if pack == "standalone":
 		print(executables["standalone"], " ", game)
 		print(" ".join(["/C", "cd \"%s\" && \"%s\"" % [folders[pack][game], executables["standalone"][game]]]))
@@ -310,6 +320,22 @@ func launch_game(pack: String, game: String):
 		
 	OS.execute("CMD.exe", ["/C", "cd \"{0}\" && \"{1}\" -launchTo games\\{2}\\{2}.swf".format([folders[pack], executables[pack], game])])
 
+func launch_linux(pack: String, game: String):
+	if pack == "standalone":
+		#print(executables["standalone"], " ", game)
+		#print(" ".join(["/C", "cd \"%s\" && \"%s\"" % [folders[pack][game], executables["standalone"][game]]]))
+		OS.execute("/usr/bin/env sh", ["-s", '"cd \"%s\" && \"%s\""' % [folders[pack][game], executables["standalone"][game]]])
+		return
+		
+	OS.execute("/usr/bin/env sh", ["-s", '"cd \"{0}\" && \"{1}\" -launchTo games\\{2}\\{2}.swf"'.format([folders[pack], executables[pack], game])])
+
+func launch_game(pack: String, game: String):
+	launch_windows(pack, game)
+	#match os_mode:
+		#operating_systems.windows: launch_windows(pack, game)
+		#operating_systems.linux: launch_linux(pack, game)
+		#operating_systems.mac: launch_linux(pack, game)
+	
 func save_favorites():
 	var file_opener: FileAccess = FileAccess.open("user://favorites.json", FileAccess.WRITE)
 	
