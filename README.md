@@ -37,6 +37,40 @@ To launch a game, just click its name.
 
 Just download the .zip file, extract it, and open it with Godot (4.5 or later)
 
+## Pack -> ID Key
+
+### Party Packs
+pp1 -> Party Pack 1
+
+pp2 -> Party Pack 2
+
+pp3 -> Party Pack 3
+
+pp4 -> Party Pack 4
+
+pp5 -> Party Pack 5
+
+pp6 -> Party Pack 6
+
+pp7 -> Party Pack 7
+
+pp8 -> Party Pack 8
+
+pp9 -> Party Pack 9
+
+pp10 -> Party Pack 10
+
+pp11 -> Party Pack 11
+
+np -> Naughty Pack
+
+### Standalone Games
+drawful2 -> Drawful 2
+
+quiplash2standalone -> Quiplash 2
+
+survey -> Survey Scramble
+
 ## Todo
 
 - Support for the Party Starter
