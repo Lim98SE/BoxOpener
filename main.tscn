@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc8wd55m0d7ew"]
+[gd_scene load_steps=8 format=3 uid="uid://dc8wd55m0d7ew"]
 
 [ext_resource type="Theme" uid="uid://cwnyqmynuxno3" path="res://theme.tres" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://bf3wrhh0kugne" path="res://game_list.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://ddkql7y2pr1bq" path="res://pack_list.gd" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://de2jurywbhn2i" path="res://search.gd" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://cl4lmdtvlkd5t" path="res://nsfw.gd" id="5_272bh"]
 [ext_resource type="Script" uid="uid://dlald8f2p2qgm" path="res://filter_mode.gd" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://dfn5rwpjsesdx" path="res://random_game.gd" id="6_7mycd"]
 
 [node name="Control" type="PanelContainer"]
 anchors_preset = 15
@@ -19,37 +21,9 @@ layout_mode = 2
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-mouse_filter = 0
-
-[node name="SearchMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 0
-
-[node name="Search" type="LineEdit" parent="VBoxContainer/HBoxContainer/SearchMargin"]
-layout_mode = 2
-focus_mode = 1
-theme = ExtResource("1_h2yge")
-placeholder_text = "Search..."
-script = ExtResource("4_1bvp3")
-
-[node name="FilterMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-mouse_filter = 0
-
-[node name="FilterMode" type="Button" parent="VBoxContainer/HBoxContainer/FilterMargin"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "All"
-expand_icon = true
-script = ExtResource("5_lquwl")
-
 [node name="PackMargin" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 0
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
@@ -102,3 +76,55 @@ size_flags_vertical = 3
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 script = ExtResource("1_ig7tw")
+
+[node name="SearchContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SearchMargin" type="MarginContainer" parent="VBoxContainer/SearchContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="Search" type="LineEdit" parent="VBoxContainer/SearchContainer/SearchMargin"]
+layout_mode = 2
+focus_mode = 1
+theme = ExtResource("1_h2yge")
+placeholder_text = "Search..."
+script = ExtResource("4_1bvp3")
+
+[node name="FilterContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NSFWFilter" type="MarginContainer" parent="VBoxContainer/FilterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="NSFW" type="Button" parent="VBoxContainer/FilterContainer/NSFWFilter"]
+layout_mode = 2
+text = "NSFW"
+expand_icon = true
+script = ExtResource("5_272bh")
+
+[node name="FilterMargin" type="MarginContainer" parent="VBoxContainer/FilterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="FilterMode" type="Button" parent="VBoxContainer/FilterContainer/FilterMargin"]
+layout_mode = 2
+text = "All"
+expand_icon = true
+script = ExtResource("5_lquwl")
+
+[node name="RandomMargin" type="MarginContainer" parent="VBoxContainer/FilterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="RandomGame" type="Button" parent="VBoxContainer/FilterContainer/RandomMargin"]
+layout_mode = 2
+text = "Random Game"
+expand_icon = true
+script = ExtResource("6_7mycd")

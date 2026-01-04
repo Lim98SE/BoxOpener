@@ -19,7 +19,14 @@ const executables: Dictionary = {
 		"pp8": "The Jackbox Party Pack 8.exe",
 		"pp9": "The Jackbox Party Pack 9.exe",
 		"pp10": "The Jackbox Party Pack 10.exe",
-		"pp11": "The Jackbox Party Pack 11.exe"
+		"pp11": "The Jackbox Party Pack 11.exe",
+		"np": "The Jackbox Naughty Pack.exe",
+		
+		"standalone": {
+			"drawful2": "Drawful 2.exe",
+			"survey": "The Jackbox Survey Scramble.exe",
+			"quiplash2standalone": "Quiplash 2.exe"
+		}
 }
 
 var os_mode: int = 0
@@ -28,6 +35,8 @@ var os_mode: int = 0
 signal searched(query: String)
 @warning_ignore("unused_signal") # shut up
 signal favoriteChanged(to: bool)
+@warning_ignore("unused_signal")
+signal nsfwChanged(to: bool)
 
 const games: Dictionary = {
 	"pp1": {
@@ -116,6 +125,18 @@ const games: Dictionary = {
 		"cookie": "CookiesGame",
 		"suspectives": "DirtyDetectives",
 		"legends": "TriviaRPG"
+	},
+	
+	"np": {
+		"dirtydraw": "Drawful3",
+		"fakinit2": "FakinIt2",
+		"letmefinish": "CAPTCHA" # lmao
+	},
+	
+	"standalone": {
+		"drawful2": "drawful2",
+		"survey": "survey",
+		"quiplash2standalone": "quiplash2standalone"
 	}
 }
 
@@ -195,7 +216,17 @@ const names: Dictionary = {
 	"hearsay": "Hear Say",
 	"cookie": "Cookie Haus",
 	"suspectives": "Suspectives",
-	"legends": "Legends of Trivia"
+	"legends": "Legends of Trivia",
+	
+	# naughty pack
+	"dirtydraw": "Dirty Drawful",
+	"fakinit2": "Fakin' It All Night Long",
+	"letmefinish": "Let Me Finish",
+	
+	# standalones
+	"drawful2": "Drawful 2",
+	"survey": "The Jackbox Survey Scramble",
+	"quiplash2standalone": "Quiplash 2"
 }
 
 const packNames: Dictionary = {
@@ -209,7 +240,9 @@ const packNames: Dictionary = {
 	"pp8": "The Jackbox Party Pack 8",
 	"pp9": "The Jackbox Party Pack 9",
 	"pp10": "The Jackbox Party Pack 10",
-	"pp11": "The Jackbox Party Pack 11"
+	"pp11": "The Jackbox Party Pack 11",
+	"np": "The Jackbox Naughty Pack",
+	"standalone": "Standalone Games"
 }
 
 var favorites: Array = [
@@ -219,6 +252,10 @@ var favorites: Array = [
 var owned_games: Dictionary = {}
 
 func _ready() -> void:
+	var version_string: String = ProjectSettings.get_setting("application/config/version")
+	
+	get_window().title = "BoxOpener " + version_string
+	
 	var json: Dictionary = {}
 	
 	var file_opener: FileAccess = FileAccess.open("user://config.json", FileAccess.READ)
@@ -252,9 +289,25 @@ func _ready() -> void:
 	favorites = loaded_array.duplicate()
 	
 	for i in folders.keys():
+		if i == "standalone": continue
 		owned_games[i] = games[i].duplicate()
+	
+	if "standalone" in folders.keys():
+		for i in folders["standalone"]:
+			if "standalone" in owned_games.keys():
+				owned_games["standalone"][i] = games["standalone"][i]
+			
+			else:
+				owned_games["standalone"] = {}
+				owned_games["standalone"][i] = games["standalone"][i]
 
 func launch_game(pack: String, game: String):
+	if pack == "standalone":
+		print(executables["standalone"], " ", game)
+		print(" ".join(["/C", "cd \"%s\" && \"%s\"" % [folders[pack][game], executables["standalone"][game]]]))
+		OS.execute("CMD.exe", ["/C", "cd \"%s\" && \"%s\"" % [folders[pack][game], executables["standalone"][game]]])
+		return
+		
 	OS.execute("CMD.exe", ["/C", "cd \"{0}\" && \"{1}\" -launchTo games\\{2}\\{2}.swf".format([folders[pack], executables[pack], game])])
 
 func save_favorites():

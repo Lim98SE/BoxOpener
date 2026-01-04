@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="BoxOpener"
+config/version="0.2"
 run/main_scene="uid://dc8wd55m0d7ew"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -27,8 +28,9 @@ JackboxManager="*res://JackboxManager.gd"
 
 window/size/viewport_width=480
 window/size/viewport_height=640
+window/size/resizable=false
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 
 [rendering]
 

@@ -5,6 +5,7 @@ var game: String
 var first: bool = false
 var is_favorite: bool = false
 var favorite_filter: bool = false
+var nsfw_filter: bool = true
 
 const not_fav_icon: Texture2D = preload("res://not_favorited.png")
 const fav_icon: Texture2D = preload("res://favorited.png")
@@ -12,6 +13,9 @@ const fav_icon: Texture2D = preload("res://favorited.png")
 func _ready() -> void:
 	JackboxManager.searched.connect(search_updated)
 	JackboxManager.favoriteChanged.connect(func(to: bool): favorite_filter = to)
+	JackboxManager.nsfwChanged.connect(func(to: bool): nsfw_filter = to)
+	
+	print(pack, " ", game)
 	
 	$GameButton.pressed.connect(_pressed)
 	$Favorite.pressed.connect(toggle_favorite)
@@ -41,6 +45,10 @@ var target_vis: bool = true:
 
 func search_updated(to: String):
 	if favorite_filter and not is_favorite:
+		target_vis = false
+		return
+	
+	if (nsfw_filter and pack == "np"):
 		target_vis = false
 		return
 	
