@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc8wd55m0d7ew"]
+
+[ext_resource type="Theme" uid="uid://cwnyqmynuxno3" path="res://theme.tres" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://bf3wrhh0kugne" path="res://game_list.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ddkql7y2pr1bq" path="res://pack_list.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://de2jurywbhn2i" path="res://search.gd" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://dlald8f2p2qgm" path="res://filter_mode.gd" id="5_lquwl"]
+
+[node name="Control" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h2yge")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 0
+theme = ExtResource("1_h2yge")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="SearchMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="Search" type="LineEdit" parent="VBoxContainer/HBoxContainer/SearchMargin"]
+layout_mode = 2
+focus_mode = 1
+theme = ExtResource("1_h2yge")
+placeholder_text = "Search..."
+script = ExtResource("4_1bvp3")
+
+[node name="FilterMargin" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 0
+
+[node name="FilterMode" type="Button" parent="VBoxContainer/HBoxContainer/FilterMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "All"
+expand_icon = true
+script = ExtResource("5_lquwl")
+
+[node name="PackMargin" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+theme = ExtResource("1_h2yge")
+
+[node name="PackContainer" type="ScrollContainer" parent="VBoxContainer/PackMargin"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 0
+theme = ExtResource("1_h2yge")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PackMargin/PackContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+theme_override_constants/margin_right = 8
+
+[node name="PackList" type="VBoxContainer" parent="VBoxContainer/PackMargin/PackContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+theme = ExtResource("1_h2yge")
+script = ExtResource("2_0xm2m")
+
+[node name="GameMargin" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+theme = ExtResource("1_h2yge")
+
+[node name="GameContainer" type="ScrollContainer" parent="VBoxContainer/GameMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+theme = ExtResource("1_h2yge")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GameMargin/GameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+theme_override_constants/margin_right = 8
+
+[node name="GameList" type="VBoxContainer" parent="VBoxContainer/GameMargin/GameContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+theme = ExtResource("1_h2yge")
+script = ExtResource("1_ig7tw")

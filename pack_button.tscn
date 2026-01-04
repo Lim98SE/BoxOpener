@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2ymbr2prqchu"]
+
+[ext_resource type="Script" uid="uid://bl02glkk2o4tp" path="res://pack_button.gd" id="1_yfp3u"]
+
+[node name="PackButton" type="Button" groups=["Pack"]]
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+alignment = 0
+script = ExtResource("1_yfp3u")

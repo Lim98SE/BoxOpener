@@ -1,0 +1,54 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cwnyqmynuxno3"]
+
+[ext_resource type="FontFile" uid="uid://xx56i77jb75v" path="res://JetBrainsMono-Medium.ttf" id="1_110ce"]
+[ext_resource type="StyleBox" uid="uid://fcsee4bijmni" path="res://disabled.tres" id="1_vj6dk"]
+[ext_resource type="StyleBox" uid="uid://ryfhkagelyd4" path="res://hover.tres" id="2_110ce"]
+[ext_resource type="StyleBox" uid="uid://dcq7xisuco2c3" path="res://normal.tres" id="3_05tig"]
+
+[sub_resource type="DPITexture" id="DPITexture_110ce"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_110ce"]
+color = Color(0.5294118, 0.5294118, 0.5294118, 1)
+grow_begin = -32.0
+grow_end = -32.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_110ce"]
+bg_color = Color(0.38928655, 0.38928664, 0.38928658, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05tig"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rmny"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mihib"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.07284262, 0.072842635, 0.072842576, 1)
+
+[resource]
+Button/fonts/font = ExtResource("1_110ce")
+Button/styles/disabled = ExtResource("1_vj6dk")
+Button/styles/focus = ExtResource("2_110ce")
+Button/styles/hover = ExtResource("2_110ce")
+Button/styles/normal = ExtResource("3_05tig")
+Button/styles/pressed = ExtResource("2_110ce")
+CheckButton/icons/checked = null
+CheckButton/icons/checked_disabled = null
+CheckButton/icons/unchecked = SubResource("DPITexture_110ce")
+HSeparator/styles/separator = SubResource("StyleBoxLine_110ce")
+LineEdit/fonts/font = ExtResource("1_110ce")
+LineEdit/styles/focus = ExtResource("2_110ce")
+LineEdit/styles/normal = ExtResource("3_05tig")
+LineEdit/styles/read_only = ExtResource("1_vj6dk")
+MarginContainer/constants/margin_bottom = 4
+MarginContainer/constants/margin_left = 4
+MarginContainer/constants/margin_right = 4
+MarginContainer/constants/margin_top = 4
+PanelContainer/styles/panel = ExtResource("3_05tig")
+ScrollContainer/styles/panel = ExtResource("3_05tig")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_110ce")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_05tig")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_1rmny")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_mihib")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_mihib")

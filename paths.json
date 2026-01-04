@@ -1,0 +1,29 @@
+{
+    "dir": {
+        "pp1": "C:\\Program Files (x86)\\Games\\Jackbox Party Pack 1",
+        "pp2": "C:\\Program Files (x86)\\Games\\Jackbox Party Pack 2",
+        "pp3": "C:\\Program Files (x86)\\Games\\Jackbox Party Pack 3",
+        "pp4": "C:\\Program Files\\Epic Games\\JackboxPartyPack4",
+        "pp5": "C:\\Program Files (x86)\\Games\\Jackbox Party Pack 5",
+        "pp6": "C:\\Program Files (x86)\\Games\\Jackbox Party Pack 6",
+        "pp7": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Jackbox Party Pack 7",
+        "pp8": "C:\\Program Files (x86)\\Games\\Jackbox Party Pack 8",
+        "pp9": "C:\\Program Files (x86)\\Games\\Jackbox Party Pack 9",
+        "pp10": "C:\\Program Files (x86)\\Games\\Jackbox Party Pack 10",
+        "pp11": "C:\\Program Files (x86)\\Games\\Jackbox Party Pack 11"
+    },
+
+    "exe": {
+        "pp1": "The Jackbox Party Pack.exe",
+        "pp2": "The Jackbox Party Pack 2.exe",
+        "pp3": "The Jackbox Party Pack 3.exe",
+        "pp4": "The Jackbox Party Pack 4.exe",
+        "pp5": "The Jackbox Party Pack 5.exe",
+        "pp6": "The Jackbox Party Pack 6.exe",
+        "pp7": "The Jackbox Party Pack 7.exe",
+        "pp8": "The Jackbox Party Pack 8.exe",
+        "pp9": "The Jackbox Party Pack 9.exe",
+        "pp10": "The Jackbox Party Pack 10.exe",
+        "pp11": "The Jackbox Party Pack 11.exe"
+    }
+}

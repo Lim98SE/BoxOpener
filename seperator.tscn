@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c78d1ydukac7p"]
+
+[ext_resource type="Theme" uid="uid://cwnyqmynuxno3" path="res://theme.tres" id="1_ciys2"]
+[ext_resource type="Script" uid="uid://drrdorkvq6goa" path="res://seperator.gd" id="2_lbbbv"]
+
+[node name="Seperator" type="HSeparator"]
+offset_right = 40.0
+offset_bottom = 4.0
+theme = ExtResource("1_ciys2")
+script = ExtResource("2_lbbbv")
