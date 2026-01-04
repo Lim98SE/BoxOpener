@@ -33,3 +33,4 @@ To launch a game, just click its name.
 - Support for standalone games (Quiplash, Fibbage XL, Drawful 2, Quiplash 2, and the Survey Scramble)
 - Support for the Naughty Pack
 - Support for the Party Starter
+- Support for Mac and Linux (potentially)
