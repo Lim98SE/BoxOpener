@@ -73,5 +73,6 @@ survey -> Survey Scramble
 
 ## Todo
 
+- Support for Fibbage XL and Quiplash 1
 - Support for the Party Starter
 - Support for Mac and Linux (potentially)
