@@ -6,7 +6,7 @@ func update():
 	for i in get_children():
 		i.queue_free()
 	
-	for i in JackboxManager.packNames:
+	for i in JackboxManager.owned_games.keys():
 		var button: Button = button_scene.instantiate()
 		
 		button.text = JackboxManager.packNames[i]

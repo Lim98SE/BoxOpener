@@ -9,13 +9,13 @@ func update():
 	
 	var index: int = 0
 	
-	for pack in JackboxManager.games.keys():
+	for pack in JackboxManager.owned_games.keys():
 		index = 0
-		for i in JackboxManager.games[pack]:
+		for i in JackboxManager.owned_games[pack]:
 			var button: HBoxContainer = button_scene.instantiate()
 			
 			button.pack = pack
-			button.game = JackboxManager.games[pack][i]
+			button.game = JackboxManager.owned_games[pack][i]
 			button.get_node("GameButton").text = JackboxManager.names[i]
 			button.first = index == 0
 			
@@ -23,7 +23,7 @@ func update():
 			
 			index += 1
 		
-		if pack == JackboxManager.games.keys()[-1]: break
+		if pack == JackboxManager.owned_games.keys()[-1]: break
 		var sep: HSeparator = seperator_scene.instantiate()
 		add_child(sep)
 

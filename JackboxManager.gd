@@ -216,10 +216,18 @@ var favorites: Array = [
 	"quiplash3"
 ]
 
+var owned_games: Dictionary = {}
+
 func _ready() -> void:
 	var json: Dictionary = {}
 	
 	var file_opener: FileAccess = FileAccess.open("user://config.json", FileAccess.READ)
+	
+	if FileAccess.get_open_error():
+		OS.alert("Please create config.json in your user folder.", "Error!")
+		OS.shell_open(ProjectSettings.globalize_path("user://"))
+		get_tree().quit()
+		return
 	
 	json = JSON.parse_string(file_opener.get_as_text())
 	
@@ -231,11 +239,20 @@ func _ready() -> void:
 	
 	file_opener = FileAccess.open("user://favorites.json", FileAccess.READ)
 	
+	if FileAccess.get_open_error():
+		OS.alert("Please create config.json in your user folder.", "Error!")
+		OS.shell_open(ProjectSettings.globalize_path("user://"))
+		get_tree().quit()
+		return
+	
 	loaded_array = JSON.parse_string(file_opener.get_as_text())
 	
 	file_opener.close()
 	
 	favorites = loaded_array.duplicate()
+	
+	for i in folders.keys():
+		owned_games[i] = games[i].duplicate()
 
 func launch_game(pack: String, game: String):
 	OS.execute("CMD.exe", ["/C", "cd \"{0}\" && \"{1}\" -launchTo games\\{2}\\{2}.swf".format([folders[pack], executables[pack], game])])
