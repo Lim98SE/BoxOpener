@@ -25,6 +25,10 @@ func update():
 		
 		if pack == JackboxManager.owned_games.keys()[-1]: break
 		var sep: HSeparator = seperator_scene.instantiate()
+		
+		if pack == "np":
+			sep.is_naughty = true
+		
 		add_child(sep)
 
 func _ready() -> void:

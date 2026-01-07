@@ -1,12 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://dc8wd55m0d7ew"]
+[gd_scene load_steps=19 format=3 uid="uid://dc8wd55m0d7ew"]
 
 [ext_resource type="Theme" uid="uid://cwnyqmynuxno3" path="res://theme.tres" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://bf3wrhh0kugne" path="res://game_list.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://ddkql7y2pr1bq" path="res://pack_list.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://b88y4iflvteab" path="res://full_window_background.gd" id="3_w48qg"]
 [ext_resource type="Script" uid="uid://de2jurywbhn2i" path="res://search.gd" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://cl4lmdtvlkd5t" path="res://nsfw.gd" id="5_272bh"]
 [ext_resource type="Script" uid="uid://dlald8f2p2qgm" path="res://filter_mode.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://dfn5rwpjsesdx" path="res://random_game.gd" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://d161yykfjqmc6" path="res://min_players.gd" id="8_4c57u"]
+[ext_resource type="Script" uid="uid://bijnogsrwtkdu" path="res://info_box.gd" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://bw4h4u7yq2r31" path="res://gameLogos/roomerang.png" id="9_kek77"]
+[ext_resource type="Script" uid="uid://dqkspatqe1r4c" path="res://sound.gd" id="10_dg77c"]
+[ext_resource type="Texture2D" uid="uid://bha7nyd61ff6r" path="res://gameBgs/roomerang.jpg" id="10_efxa6"]
+[ext_resource type="Script" uid="uid://c5km4qmji8rne" path="res://bg.gd" id="11_ycdy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg77c"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Shader" id="Shader_w48qg"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.5.1.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+
+void fragment(){
+	COLOR.rgb *= 0.5;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vivmo"]
+shader = SubResource("Shader_w48qg")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efxa6"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+anti_aliasing = false
 
 [node name="Control" type="PanelContainer"]
 anchors_preset = 15
@@ -15,33 +48,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_h2yge")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dg77c")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="FullWindowBackground" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_vivmo")
 layout_mode = 2
+texture = ExtResource("10_efxa6")
+expand_mode = 2
+script = ExtResource("3_w48qg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameSearch" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="PackMargin" type="MarginContainer" parent="VBoxContainer"]
+[node name="PackMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch"]
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="PackContainer" type="ScrollContainer" parent="VBoxContainer/PackMargin"]
-custom_minimum_size = Vector2(0, 320)
+[node name="PackContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/PackMargin"]
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PackMargin/PackContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/PackMargin/PackContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 theme_override_constants/margin_right = 8
 
-[node name="PackList" type="VBoxContainer" parent="VBoxContainer/PackMargin/PackContainer/MarginContainer"]
+[node name="PackList" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/PackMargin/PackContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -49,27 +103,27 @@ mouse_filter = 0
 theme = ExtResource("1_h2yge")
 script = ExtResource("2_0xm2m")
 
-[node name="GameMargin" type="MarginContainer" parent="VBoxContainer"]
+[node name="GameMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="GameContainer" type="ScrollContainer" parent="VBoxContainer/GameMargin"]
+[node name="GameContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/GameMargin"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GameMargin/GameContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/GameMargin/GameContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 theme_override_constants/margin_right = 8
 
-[node name="GameList" type="VBoxContainer" parent="VBoxContainer/GameMargin/GameContainer/MarginContainer"]
+[node name="GameList" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/GameMargin/GameContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -77,54 +131,239 @@ mouse_filter = 0
 theme = ExtResource("1_h2yge")
 script = ExtResource("1_ig7tw")
 
-[node name="SearchContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="SearchContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="SearchMargin" type="MarginContainer" parent="VBoxContainer/SearchContainer"]
+[node name="SearchMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SearchContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="Search" type="LineEdit" parent="VBoxContainer/SearchContainer/SearchMargin"]
+[node name="Search" type="LineEdit" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SearchContainer/SearchMargin"]
 layout_mode = 2
 focus_mode = 1
 theme = ExtResource("1_h2yge")
 placeholder_text = "Search..."
 script = ExtResource("4_1bvp3")
 
-[node name="FilterContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="FilterContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="NSFWFilter" type="MarginContainer" parent="VBoxContainer/FilterContainer"]
+[node name="NSFWFilter" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="NSFW" type="Button" parent="VBoxContainer/FilterContainer/NSFWFilter"]
+[node name="NSFW" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer/NSFWFilter"]
 layout_mode = 2
 text = "NSFW"
 expand_icon = true
 script = ExtResource("5_272bh")
 
-[node name="FilterMargin" type="MarginContainer" parent="VBoxContainer/FilterContainer"]
+[node name="FilterMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="FilterMode" type="Button" parent="VBoxContainer/FilterContainer/FilterMargin"]
+[node name="FilterMode" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer/FilterMargin"]
 layout_mode = 2
 text = "All"
 expand_icon = true
 script = ExtResource("5_lquwl")
 
-[node name="RandomMargin" type="MarginContainer" parent="VBoxContainer/FilterContainer"]
+[node name="RandomMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="RandomGame" type="Button" parent="VBoxContainer/FilterContainer/RandomMargin"]
+[node name="RandomGame" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer/RandomMargin"]
 layout_mode = 2
 text = "Random Game"
 expand_icon = true
 script = ExtResource("6_7mycd")
+
+[node name="FilterLabelContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MinLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Min. Players"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MaxLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max. Players"
+horizontal_alignment = 1
+
+[node name="PlayerCountContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MinMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="MinContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MinMargin"]
+layout_mode = 2
+
+[node name="SliderLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MinMargin/MinContainer"]
+custom_minimum_size = Vector2(29, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="MinPlayers" type="HSlider" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MinMargin/MinContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_h2yge")
+max_value = 12.0
+script = ExtResource("8_4c57u")
+mode = 1
+
+[node name="MaxMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="MaxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MaxMargin"]
+layout_mode = 2
+
+[node name="SliderLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MaxMargin/MaxContainer"]
+custom_minimum_size = Vector2(29, 0)
+layout_mode = 2
+text = "5"
+horizontal_alignment = 2
+
+[node name="MaxPlayers" type="HSlider" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MaxMargin/MaxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_h2yge")
+max_value = 12.0
+script = ExtResource("8_4c57u")
+
+[node name="SettingsBox" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SoundToggle" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="Sound" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox/SoundToggle"]
+layout_mode = 2
+text = "Sound"
+expand_icon = true
+script = ExtResource("10_dg77c")
+
+[node name="BG" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+
+[node name="BG" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox/BG"]
+layout_mode = 2
+text = "Background"
+expand_icon = true
+script = ExtResource("11_ycdy4")
+
+[node name="InfoBox" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_h2yge")
+
+[node name="InfoMargins" type="MarginContainer" parent="HBoxContainer/InfoBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_h2yge")
+
+[node name="InfoBox" type="VBoxContainer" parent="HBoxContainer/InfoBox/InfoMargins"]
+layout_mode = 2
+script = ExtResource("8_5vw27")
+
+[node name="LogoOutline" type="PanelContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_efxa6")
+
+[node name="LogoContainer" type="CenterContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/LogoOutline"]
+custom_minimum_size = Vector2(466, 210)
+layout_mode = 2
+theme = ExtResource("1_h2yge")
+
+[node name="GameBackground" type="TextureRect" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/LogoOutline/LogoContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+texture = ExtResource("10_efxa6")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="GameLogo" type="TextureRect" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/LogoOutline/LogoContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+texture = ExtResource("9_kek77")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameDescription" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(458, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Game Description"
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox"]
+layout_mode = 2
+
+[node name="PlayerCount" type="HBoxContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("1_h2yge")
+
+[node name="MinCount" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer/PlayerCount"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Min: 4 Players"
+
+[node name="Pack" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer/PlayerCount"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Naughty Pack"
+horizontal_alignment = 1
+
+[node name="MaxCount" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer/PlayerCount"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Max: 4 Players"

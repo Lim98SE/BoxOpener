@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cwnyqmynuxno3"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://cwnyqmynuxno3"]
 
 [ext_resource type="FontFile" uid="uid://xx56i77jb75v" path="res://JetBrainsMono-Medium.ttf" id="1_110ce"]
 [ext_resource type="StyleBox" uid="uid://fcsee4bijmni" path="res://disabled.tres" id="1_vj6dk"]
@@ -12,6 +12,25 @@ color = Color(0.5294118, 0.5294118, 0.5294118, 1)
 grow_begin = -32.0
 grow_end = -32.0
 thickness = 2
+
+[sub_resource type="DPITexture" id="DPITexture_05tig"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\"/></svg>
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yin2u"]
+bg_color = Color(0.28485027, 0.28485027, 0.2848502, 1)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttqs8"]
+bg_color = Color(0.74558026, 0.7455802, 0.74558014, 1)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdt2l"]
+bg_color = Color(0.15127608, 0.15127608, 0.15127605, 1)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_110ce"]
 bg_color = Color(0.38928655, 0.38928664, 0.38928658, 1)
@@ -37,6 +56,11 @@ CheckButton/icons/checked = null
 CheckButton/icons/checked_disabled = null
 CheckButton/icons/unchecked = SubResource("DPITexture_110ce")
 HSeparator/styles/separator = SubResource("StyleBoxLine_110ce")
+HSlider/icons/grabber = SubResource("DPITexture_05tig")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_yin2u")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ttqs8")
+HSlider/styles/slider = SubResource("StyleBoxFlat_wdt2l")
+Label/fonts/font = ExtResource("1_110ce")
 LineEdit/fonts/font = ExtResource("1_110ce")
 LineEdit/styles/focus = ExtResource("2_110ce")
 LineEdit/styles/normal = ExtResource("3_05tig")

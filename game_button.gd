@@ -6,6 +6,10 @@ var first: bool = false
 var is_favorite: bool = false
 var favorite_filter: bool = false
 var nsfw_filter: bool = true
+var game_id: String = ""
+
+var player_min: int = 0
+var player_max: int = 0
 
 const not_fav_icon: Texture2D = preload("res://not_favorited.png")
 const fav_icon: Texture2D = preload("res://favorited.png")
@@ -15,10 +19,19 @@ func _ready() -> void:
 	JackboxManager.favoriteChanged.connect(func(to: bool): favorite_filter = to)
 	JackboxManager.nsfwChanged.connect(func(to: bool): nsfw_filter = to)
 	
+	game_id = JackboxManager.games[pack].find_key(game)
+	
 	print(pack, " ", game)
 	
 	$GameButton.pressed.connect(_pressed)
 	$Favorite.pressed.connect(toggle_favorite)
+	
+	$GameButton.mouse_entered.connect(mouse_enter)
+	
+	var my_metadata: Dictionary = JackboxManager.metadata[game_id]
+	
+	player_min = my_metadata["playerCount"][0]
+	player_max = my_metadata["playerCount"][1]
 
 func toggle_favorite():
 	is_favorite = !is_favorite
@@ -52,6 +65,16 @@ func search_updated(to: String):
 		target_vis = false
 		return
 	
+	if JackboxManager.filter_max != 0:
+		if JackboxManager.filter_max > player_max:
+			target_vis = false
+			return
+	
+	if JackboxManager.filter_min != 0:
+		if JackboxManager.filter_min < player_min:
+			target_vis = false
+			return
+	
 	if to == "":
 		target_vis = true
 		return
@@ -63,6 +86,13 @@ func search_updated(to: String):
 			if a.to_lower() in b.to_lower():
 				target_vis = true
 				return
+
+func mouse_enter():
+	#print("hi!")
+	JackboxManager.update_desc(pack, game_id)
+	
+	if JackboxManager.sfx:
+		$Scroll.play()
 
 func _process(delta: float) -> void:
 	if game in JackboxManager.favorites:
