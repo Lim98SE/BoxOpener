@@ -31,7 +31,7 @@ To favorite a game, click the little circle next to its name. You can filter for
 
 To launch a game, just click its name.
 
-**NSFW Games are shown by default!** If you want to disable these from being picked with Random Game, click the button that says "Show NSFW."
+**NSFW Games are shown by default!** If you want to disable these from being picked with Random Game, click the button that says "NSFW: On"
 
 ## Editing
 
