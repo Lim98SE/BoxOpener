@@ -814,9 +814,6 @@ func _ready() -> void:
 	var file_opener: FileAccess = FileAccess.open("user://config.json", FileAccess.READ)
 	
 	if FileAccess.get_open_error():
-		OS.alert("Please create config.json in your user folder.", "Error!")
-		OS.shell_open(ProjectSettings.globalize_path("user://"))
-		get_tree().quit()
 		return
 	
 	json = JSON.parse_string(file_opener.get_as_text())
@@ -888,6 +885,8 @@ func _ready() -> void:
 	file_opener.close()
 	
 	settingsLoaded.emit()
+	
+	get_tree().call_deferred("change_scene_to_file", "res://main.tscn")
 
 var frames: int = 0
 
@@ -895,9 +894,14 @@ func launch_windows(pack: String, game: String):
 	if pack == "standalone":
 		print(executables["standalone"], " ", game)
 		print(" ".join(["/C", "cd \"%s\" && \"%s\"" % [folders[pack][game], executables["standalone"][game]]]))
+		
+		if (folders[pack][game][0].upper() != "C"):
+			OS.execute("CMD.exe", ["/C", "{0}:\\".format(folders[pack][game][0].upper())])
+		
 		OS.execute("CMD.exe", ["/C", "cd \"%s\" && \"%s\"" % [folders[pack][game], executables["standalone"][game]]])
 		return
-		
+	
+	print(" ".join(["/C", "cd \"{0}\" && \"{0}{1}\" -launchTo games\\{2}\\{2}.swf".format([folders[pack], executables[pack], game])]))
 	OS.execute("CMD.exe", ["/C", "cd \"{0}\" && \"{1}\" -launchTo games\\{2}\\{2}.swf".format([folders[pack], executables[pack], game])])
 
 func launch_linux(pack: String, game: String):
@@ -911,6 +915,7 @@ func launch_linux(pack: String, game: String):
 
 func launch_game(pack: String, game: String):
 	launch_windows(pack, game)
+	
 	#match os_mode:
 		#operating_systems.windows: launch_windows(pack, game)
 		#operating_systems.linux: launch_linux(pack, game)

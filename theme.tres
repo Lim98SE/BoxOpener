@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://cwnyqmynuxno3"]
+[gd_resource type="Theme" format=3 uid="uid://cwnyqmynuxno3"]
 
 [ext_resource type="FontFile" uid="uid://xx56i77jb75v" path="res://JetBrainsMono-Medium.ttf" id="1_110ce"]
 [ext_resource type="StyleBox" uid="uid://fcsee4bijmni" path="res://disabled.tres" id="1_vj6dk"]
@@ -69,6 +69,11 @@ MarginContainer/constants/margin_bottom = 4
 MarginContainer/constants/margin_left = 4
 MarginContainer/constants/margin_right = 4
 MarginContainer/constants/margin_top = 4
+MenuButton/styles/disabled = ExtResource("1_vj6dk")
+MenuButton/styles/focus = ExtResource("2_110ce")
+MenuButton/styles/hover = ExtResource("2_110ce")
+MenuButton/styles/normal = ExtResource("3_05tig")
+MenuButton/styles/pressed = ExtResource("2_110ce")
 PanelContainer/styles/panel = ExtResource("3_05tig")
 ScrollContainer/styles/panel = ExtResource("3_05tig")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_110ce")

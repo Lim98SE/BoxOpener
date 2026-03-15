@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cdfa76wlrox3"]
+
+[ext_resource type="Theme" uid="uid://cwnyqmynuxno3" path="res://theme.tres" id="1_s22n7"]
+[ext_resource type="Script" uid="uid://b11f6u8hpfll6" path="res://inital_setup.gd" id="2_00mlo"]
+[ext_resource type="Shader" uid="uid://cffcyfg3f7bye" path="res://rainbow_button.gdshader" id="2_1olj3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg77c"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_1olj3"]
+offsets = PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.58933336, 0.120000005, 1, 1, 0.9375, 0.25, 1, 0.42249995, 1, 0.37, 1, 0.5, 0.8416667, 1, 1, 0.38799995, 0.32, 1, 1, 0.6849997, 0.100000024, 1, 1, 1, 0, 0.7666664, 1, 1, 0, 0.016666412, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_00mlo"]
+gradient = SubResource("Gradient_1olj3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_00mlo"]
+shader = ExtResource("2_1olj3")
+shader_parameter/gradient = SubResource("GradientTexture2D_00mlo")
+
+[node name="Control" type="PanelContainer" unique_id=1271528678]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s22n7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dg77c")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=669723551]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=985277781]
+layout_mode = 2
+
+[node name="Welcome" type="Label" parent="MarginContainer/VBoxContainer" unique_id=534709389]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Welcome to BoxOpener!"
+
+[node name="Instructions" type="Label" parent="MarginContainer/VBoxContainer" unique_id=898322195]
+layout_mode = 2
+text = "Click \"add\" and fill out every pack you want, then click \"Save & Go\".
+Tip: keep BoxOpener on the same drive as your party packs.
+Tip: hit \"Remove Duplicates\" before saving."
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1461416377]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1490593055]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="EntryContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer" unique_id=1176453508]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=355277353]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2" unique_id=685092141]
+layout_mode = 2
+size_flags_vertical = 0
+script = ExtResource("2_00mlo")
+
+[node name="AddPack" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=361050176]
+layout_mode = 2
+text = "Add Pack"
+
+[node name="RemovePack" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=249834031]
+layout_mode = 2
+text = "Remove Last Pack"
+
+[node name="DeleteDupes" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=884247318]
+layout_mode = 2
+text = "Remove Duplicates"
+
+[node name="Go" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer" unique_id=2060970345]
+material = SubResource("ShaderMaterial_00mlo")
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Save & Go!"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dc8wd55m0d7ew"]
+[gd_scene format=3 uid="uid://dc8wd55m0d7ew"]
 
 [ext_resource type="Theme" uid="uid://cwnyqmynuxno3" path="res://theme.tres" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://bf3wrhh0kugne" path="res://game_list.gd" id="1_ig7tw"]
@@ -41,7 +41,7 @@ shadow_size = 1
 shadow_offset = Vector2(2, 2)
 anti_aliasing = false
 
-[node name="Control" type="PanelContainer"]
+[node name="Control" type="PanelContainer" unique_id=1271528678]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,7 +50,7 @@ grow_vertical = 2
 theme = ExtResource("1_h2yge")
 theme_override_styles/panel = SubResource("StyleBoxFlat_dg77c")
 
-[node name="FullWindowBackground" type="TextureRect" parent="."]
+[node name="FullWindowBackground" type="TextureRect" parent="." unique_id=1114858751]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_vivmo")
 layout_mode = 2
@@ -58,44 +58,44 @@ texture = ExtResource("10_efxa6")
 expand_mode = 2
 script = ExtResource("3_w48qg")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1230922655]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=2040021620]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameSearch" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer" unique_id=2039097886]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameSearch" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer" unique_id=1251655304]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="PackMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch"]
+[node name="PackMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch" unique_id=918861359]
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="PackContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/PackMargin"]
+[node name="PackContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/PackMargin" unique_id=187886160]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/PackMargin/PackContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/PackMargin/PackContainer" unique_id=385102404]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 theme_override_constants/margin_right = 8
 
-[node name="PackList" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/PackMargin/PackContainer/MarginContainer"]
+[node name="PackList" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/PackMargin/PackContainer/MarginContainer" unique_id=1226590131]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -103,27 +103,27 @@ mouse_filter = 0
 theme = ExtResource("1_h2yge")
 script = ExtResource("2_0xm2m")
 
-[node name="GameMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch"]
+[node name="GameMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch" unique_id=1632275751]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="GameContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/GameMargin"]
+[node name="GameContainer" type="ScrollContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/GameMargin" unique_id=1602633126]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 0
 theme = ExtResource("1_h2yge")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/GameMargin/GameContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/GameMargin/GameContainer" unique_id=500384133]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 theme_override_constants/margin_right = 8
 
-[node name="GameList" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/GameMargin/GameContainer/MarginContainer"]
+[node name="GameList" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/GameMargin/GameContainer/MarginContainer" unique_id=1230473463]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -131,109 +131,109 @@ mouse_filter = 0
 theme = ExtResource("1_h2yge")
 script = ExtResource("1_ig7tw")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch" unique_id=985841966]
 layout_mode = 2
 theme_override_constants/margin_top = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer" unique_id=733385799]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer" unique_id=597422702]
 layout_mode = 2
 
-[node name="SearchContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="SearchContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer" unique_id=1463895541]
 layout_mode = 2
 mouse_filter = 0
 
-[node name="SearchMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SearchContainer"]
+[node name="SearchMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SearchContainer" unique_id=859986635]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="Search" type="LineEdit" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SearchContainer/SearchMargin"]
+[node name="Search" type="LineEdit" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SearchContainer/SearchMargin" unique_id=96710961]
 layout_mode = 2
 focus_mode = 1
 theme = ExtResource("1_h2yge")
 placeholder_text = "Search..."
 script = ExtResource("4_1bvp3")
 
-[node name="FilterContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="FilterContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer" unique_id=1927951258]
 layout_mode = 2
 
-[node name="NSFWFilter" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer"]
+[node name="NSFWFilter" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer" unique_id=632011973]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="NSFW" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer/NSFWFilter"]
+[node name="NSFW" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer/NSFWFilter" unique_id=158941435]
 layout_mode = 2
 text = "NSFW"
 expand_icon = true
 script = ExtResource("5_272bh")
 
-[node name="FilterMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer"]
+[node name="FilterMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer" unique_id=1011479148]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="FilterMode" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer/FilterMargin"]
+[node name="FilterMode" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer/FilterMargin" unique_id=918853437]
 layout_mode = 2
 text = "All"
 expand_icon = true
 script = ExtResource("5_lquwl")
 
-[node name="RandomMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer"]
+[node name="RandomMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer" unique_id=347947090]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="RandomGame" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer/RandomMargin"]
+[node name="RandomGame" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterContainer/RandomMargin" unique_id=1746510900]
 layout_mode = 2
 text = "Random Game"
 expand_icon = true
 script = ExtResource("6_7mycd")
 
-[node name="FilterLabelContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="FilterLabelContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer" unique_id=265085944]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer" unique_id=2006582171]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MinLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer/MarginContainer"]
+[node name="MinLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer/MarginContainer" unique_id=406633225]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Min. Players"
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer" unique_id=991826571]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MaxLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer/MarginContainer2"]
+[node name="MaxLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/FilterLabelContainer/MarginContainer2" unique_id=1498998981]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Max. Players"
 horizontal_alignment = 1
 
-[node name="PlayerCountContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="PlayerCountContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer" unique_id=1299540547]
 layout_mode = 2
 
-[node name="MinMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer"]
+[node name="MinMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer" unique_id=1615792739]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="MinContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MinMargin"]
+[node name="MinContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MinMargin" unique_id=716805175]
 layout_mode = 2
 
-[node name="SliderLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MinMargin/MinContainer"]
+[node name="SliderLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MinMargin/MinContainer" unique_id=1409718026]
 custom_minimum_size = Vector2(29, 0)
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 
-[node name="MinPlayers" type="HSlider" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MinMargin/MinContainer"]
+[node name="MinPlayers" type="HSlider" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MinMargin/MinContainer" unique_id=536086575]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -242,21 +242,21 @@ max_value = 12.0
 script = ExtResource("8_4c57u")
 mode = 1
 
-[node name="MaxMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer"]
+[node name="MaxMargin" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer" unique_id=1626201907]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="MaxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MaxMargin"]
+[node name="MaxContainer" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MaxMargin" unique_id=941128080]
 layout_mode = 2
 
-[node name="SliderLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MaxMargin/MaxContainer"]
+[node name="SliderLabel" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MaxMargin/MaxContainer" unique_id=1722108247]
 custom_minimum_size = Vector2(29, 0)
 layout_mode = 2
 text = "5"
 horizontal_alignment = 2
 
-[node name="MaxPlayers" type="HSlider" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MaxMargin/MaxContainer"]
+[node name="MaxPlayers" type="HSlider" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/PlayerCountContainer/MaxMargin/MaxContainer" unique_id=41730321]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -264,55 +264,55 @@ theme = ExtResource("1_h2yge")
 max_value = 12.0
 script = ExtResource("8_4c57u")
 
-[node name="SettingsBox" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="SettingsBox" type="HBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer" unique_id=601169615]
 layout_mode = 2
 
-[node name="SoundToggle" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox"]
+[node name="SoundToggle" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox" unique_id=462614733]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="Sound" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox/SoundToggle"]
+[node name="Sound" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox/SoundToggle" unique_id=1449741807]
 layout_mode = 2
 text = "Sound"
 expand_icon = true
 script = ExtResource("10_dg77c")
 
-[node name="BG" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox"]
+[node name="BG" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox" unique_id=963944296]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="BG" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox/BG"]
+[node name="BG" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/GameSearch/MarginContainer/PanelContainer/VBoxContainer/SettingsBox/BG" unique_id=1758416354]
 layout_mode = 2
 text = "Background"
 expand_icon = true
 script = ExtResource("11_ycdy4")
 
-[node name="InfoBox" type="VBoxContainer" parent="HBoxContainer"]
+[node name="InfoBox" type="VBoxContainer" parent="HBoxContainer" unique_id=1107655815]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_h2yge")
 
-[node name="InfoMargins" type="MarginContainer" parent="HBoxContainer/InfoBox"]
+[node name="InfoMargins" type="MarginContainer" parent="HBoxContainer/InfoBox" unique_id=927822107]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_h2yge")
 
-[node name="InfoBox" type="VBoxContainer" parent="HBoxContainer/InfoBox/InfoMargins"]
+[node name="InfoBox" type="VBoxContainer" parent="HBoxContainer/InfoBox/InfoMargins" unique_id=207643372]
 layout_mode = 2
 script = ExtResource("8_5vw27")
 
-[node name="LogoOutline" type="PanelContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox"]
+[node name="LogoOutline" type="PanelContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox" unique_id=119722595]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_efxa6")
 
-[node name="LogoContainer" type="CenterContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/LogoOutline"]
+[node name="LogoContainer" type="CenterContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/LogoOutline" unique_id=1760802988]
 custom_minimum_size = Vector2(466, 210)
 layout_mode = 2
 theme = ExtResource("1_h2yge")
 
-[node name="GameBackground" type="TextureRect" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/LogoOutline/LogoContainer"]
+[node name="GameBackground" type="TextureRect" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/LogoOutline/LogoContainer" unique_id=259354093]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
@@ -320,7 +320,7 @@ texture = ExtResource("10_efxa6")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="GameLogo" type="TextureRect" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/LogoOutline/LogoContainer"]
+[node name="GameLogo" type="TextureRect" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/LogoOutline/LogoContainer" unique_id=348178476]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
@@ -328,11 +328,11 @@ texture = ExtResource("9_kek77")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox" unique_id=1699263976]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GameDescription" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/ScrollContainer"]
+[node name="GameDescription" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/ScrollContainer" unique_id=1264811247]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(458, 0)
 layout_mode = 2
@@ -342,27 +342,27 @@ theme_override_font_sizes/font_size = 24
 text = "Game Description"
 autowrap_mode = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox" unique_id=1257920224]
 layout_mode = 2
 
-[node name="PlayerCount" type="HBoxContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer"]
+[node name="PlayerCount" type="HBoxContainer" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer" unique_id=1195184017]
 layout_mode = 2
 theme = ExtResource("1_h2yge")
 
-[node name="MinCount" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer/PlayerCount"]
+[node name="MinCount" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer/PlayerCount" unique_id=1591926522]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Min: 4 Players"
 
-[node name="Pack" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer/PlayerCount"]
+[node name="Pack" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer/PlayerCount" unique_id=2071028666]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Naughty Pack"
 horizontal_alignment = 1
 
-[node name="MaxCount" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer/PlayerCount"]
+[node name="MaxCount" type="Label" parent="HBoxContainer/InfoBox/InfoMargins/InfoBox/PanelContainer/PlayerCount" unique_id=1276382323]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10

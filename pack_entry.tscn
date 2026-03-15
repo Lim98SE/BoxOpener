@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d0wo0eb0a82ym"]
+
+[ext_resource type="Theme" uid="uid://cwnyqmynuxno3" path="res://theme.tres" id="1_3ebxr"]
+[ext_resource type="Script" uid="uid://chlt0vjtcst03" path="res://pack_entry.gd" id="2_4otg3"]
+
+[node name="PackEntry" type="HBoxContainer" unique_id=2073469544]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme = ExtResource("1_3ebxr")
+script = ExtResource("2_4otg3")
+
+[node name="MenuButton" type="OptionButton" parent="." unique_id=1254605323]
+layout_mode = 2
+theme = ExtResource("1_3ebxr")
+
+[node name="Path" type="LineEdit" parent="." unique_id=142859666]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "File path here..."
