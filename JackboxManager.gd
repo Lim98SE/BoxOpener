@@ -35,7 +35,7 @@ enum operating_systems {
 	linux
 }
 
-var os_mode: operating_systems = operating_systems.windows
+var os_mode: operating_systems = operating_systems.mac
 
 @warning_ignore("unused_signal") # godot they are used elsewhere
 signal searched(query: String)
@@ -814,13 +814,14 @@ func _ready() -> void:
 	var file_opener: FileAccess = FileAccess.open("user://config.json", FileAccess.READ)
 	
 	if FileAccess.get_open_error():
+		print("file open error")
 		return
 	
 	json = JSON.parse_string(file_opener.get_as_text())
 	
 	file_opener.close()
 	
-	folders = json.get("dir", {})
+	folders = json
 	
 	var loaded_array: Array
 	
@@ -913,13 +914,41 @@ func launch_linux(pack: String, game: String):
 		
 	OS.execute("/usr/bin/env sh", ["-s", '"cd \"{0}\" && \"{1}\" -launchTo games\\{2}\\{2}.swf"'.format([folders[pack], executables[pack], game])])
 
-func launch_game(pack: String, game: String):
-	launch_windows(pack, game)
+func launch_mac(pack: String, game: String):
+	print(pack, game)
 	
-	#match os_mode:
-		#operating_systems.windows: launch_windows(pack, game)
-		#operating_systems.linux: launch_linux(pack, game)
-		#operating_systems.mac: launch_linux(pack, game)
+	if pack == "standalone":
+		var exec: String = executables["standalone"][game].replace(".exe", "").strip_edges()
+		#print(executables["standalone"], " ", game)
+		#print(" ".join(["/C", "cd \"%s\" && \"%s\"" % [folders[pack][game], executables["standalone"][game]]]))
+		OS.execute("/usr/bin/env sh", ["-s", '"cd \"%s\" && \"%s\""' % [folders[pack][game], exec]])
+		return
+	
+	var exec: String = executables[pack].replace(".exe", "").strip_edges()
+	
+	var args: Array[String] = [
+		"-c",
+		"\"cd '{0}' && open -n '{1}.app' --args -launchTo {2}\"".format(
+			[
+				folders[pack],
+				exec,
+				"games/%s/%s.swf" % [game, game]
+			]
+		)
+	]
+	
+	print("/usr/bin/env sh ", " ".join(args))
+	
+	OS.execute("/usr/bin/env sh", args)
+
+
+func launch_game(pack: String, game: String):
+	#launch_windows(pack, game)
+	
+	match os_mode:
+		operating_systems.windows: launch_windows(pack, game)
+		operating_systems.linux: launch_linux(pack, game)
+		operating_systems.mac: launch_mac(pack, game)
 	
 func save_favorites():
 	var file_opener: FileAccess = FileAccess.open("user://favorites.json", FileAccess.WRITE)
