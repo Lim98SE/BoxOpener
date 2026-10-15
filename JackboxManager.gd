@@ -20,6 +20,7 @@ const executables: Dictionary = {
 		"pp9": "The Jackbox Party Pack 9.exe",
 		"pp10": "The Jackbox Party Pack 10.exe",
 		"pp11": "The Jackbox Party Pack 11.exe",
+		"pp12": "The Jackbox Party Pack 12.exe",
 		"np": "The Jackbox Naughty Pack.exe",
 		
 		"standalone": {
