@@ -135,6 +135,14 @@ const games: Dictionary = {
 		"legends": "TriviaRPG"
 	},
 	
+	"pp12": {
+		"debate": "Debate",
+		"forgotcard": "GratingCards",
+		"hyperface": "ReactionGame",
+		"megapals": "MegaFriends",
+		"idolfactions": "WordProcessing"
+	},
+	
 	"np": {
 		"dirtydraw": "Drawful3",
 		"fakinit2": "FakinIt2",
@@ -226,6 +234,13 @@ const names: Dictionary = {
 	"suspectives": "Suspectives",
 	"legends": "Legends of Trivia",
 	
+	# pp12
+	"forgotcard": "We Forgot A Card!",
+	"megapals": "MegaPals",
+	"debate": "Debate and Twist",
+	"hyperface": "Hyperface",
+	"idolfactions": "Idol Factions",
+	
 	# naughty pack
 	"dirtydraw": "Dirty Drawful",
 	"fakinit2": "Fakin' It All Night Long",
@@ -249,6 +264,7 @@ const packNames: Dictionary = {
 	"pp9": "The Jackbox Party Pack 9",
 	"pp10": "The Jackbox Party Pack 10",
 	"pp11": "The Jackbox Party Pack 11",
+	"pp12": "The Jackbox Party Pack 12",
 	"np": "The Jackbox Naughty Pack",
 	"standalone": "Standalone Games"
 }
@@ -747,7 +763,42 @@ const metadata: Dictionary = {
 	  4,
 	  8
 	]
-  }
+  },
+	"debate": {
+		"title": "Debate & Switch",
+		"desc": "--- PLACEHOLDER ---",
+		"playerCount": [
+			2, 8
+		]
+	},
+	"forgotcard": {
+		"title": "We Forgot A Card!",
+		"desc": "--- PLACEHOLDER ---",
+		"playerCount": [
+			3, 8
+		]
+	},
+	"megapals": {
+		"title": "MegaPals",
+		"desc": "--- PLACEHOLDER ---",
+		"playerCount": [
+			3, 8
+		]
+	},
+	"hyperface": {
+		"title": "HyperFace",
+		"desc": "--- PLACEHOLDER ---",
+		"playerCount": [
+			3, 8
+		]
+	},
+	"idolfactions": {
+		"title": "Idol Factions",
+		"desc": "--- PLACEHOLDER ---",
+		"playerCount": [
+			2, 8
+		]
+	}
 }
 
 var filter_min: int = 0
